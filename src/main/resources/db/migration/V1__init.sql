@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS CARTAO(
+  ID                 INT          NOT NULL    AUTO_INCREMENT,
+  DESCRICAO          VARCHAR(50)  NOT NULL,
+  CREDENCIADORA      VARCHAR(50),
+  CNPJ               BIGINT,
+  LIMITE             BIGINT,
+  VENCIMENTO         DATE         NOT NULL,
+  TIPO               VARCHAR(1)   NOT NULL,
+  BANDEIRA           VARCHAR(20),
+  PRIMARY KEY PK_CARTAO (ID)
+);
