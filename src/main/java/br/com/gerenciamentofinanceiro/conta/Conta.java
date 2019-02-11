@@ -1,5 +1,6 @@
-package br.com.gerenciamentofinanceiro.cartao;
+package br.com.gerenciamentofinanceiro.conta;
 
+import br.com.gerenciamentofinanceiro.cartao.Cartao;
 import br.com.gerenciamentofinanceiro.config.LocalDateDeserializer;
 import br.com.gerenciamentofinanceiro.config.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -12,9 +13,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "cartao")
+@Table(name = "contas")
 @Data
-public class Cartao implements Serializable {
+public class Conta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,25 +26,18 @@ public class Cartao implements Serializable {
     @Column(name = "DESCRICAO")
     private String descricao;
 
-    @Column(name = "CREDENCIADORA")
-    private String credenciadora;
-
-    @Column(name = "CNPJ")
-    private Long cnpj;
-
-    @Column(name = "LIMITE")
-    private Long limite;
-
-    @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @NotNull
     @Column(name = "VENCIMENTO")
     private LocalDate vencimento;
 
-    @NotNull
-    @Column(name = "TIPO")
-    private String tipo;
+    @Column(name = "PARCELAS")
+    private String parcelas;
 
-    @Column(name = "BANDEIRA")
-    private String bandeira;
+    @ManyToOne
+    @JoinColumn(name = "ID_CARTAO")
+    private Cartao cartao;
+
+
 }

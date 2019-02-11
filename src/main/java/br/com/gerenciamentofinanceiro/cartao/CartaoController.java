@@ -13,7 +13,7 @@ public class CartaoController {
     CartaoService cartaoService;
 
     @GetMapping("/{id}")
-    public Cartao findOne (@PathVariable("id") Integer id) {
+    public Cartao findOne(@PathVariable("id") Integer id) {
         return cartaoService.findOne(id);
     }
 
@@ -30,5 +30,10 @@ public class CartaoController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Integer id) {
         cartaoService.delete(id);
+    }
+
+    @GetMapping("/complete")
+    public List<Cartao> complete(@RequestParam("query") String query) {
+        return cartaoService.complete(query);
     }
 }

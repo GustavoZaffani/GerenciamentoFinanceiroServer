@@ -30,4 +30,13 @@ public class CartaoServiceImpl implements CartaoService {
     public void delete(Integer id) {
         cartaoData.deleteById(id);
     }
+
+    @Override
+    public List<Cartao> complete(String query) {
+        if ("".equalsIgnoreCase(query)) {
+            return cartaoData.findAll();
+        } else {
+            return cartaoData.findCartaoByDescricaoLike('%' + query + '%');
+        }
+    }
 }
