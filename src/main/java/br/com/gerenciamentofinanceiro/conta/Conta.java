@@ -26,8 +26,8 @@ public class Conta implements Serializable {
     @Column(name = "DESCRICAO")
     private String descricao;
 
-    @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     @NotNull
     @Column(name = "VENCIMENTO")
     private LocalDate vencimento;
@@ -39,5 +39,14 @@ public class Conta implements Serializable {
     @JoinColumn(name = "ID_CARTAO")
     private Cartao cartao;
 
+    @Column(name = "TIPO_PAGAMENTO")
+    private String tipoPagamento;
 
+    @Column(name = "OBSERVACAO")
+    private String observacao;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @Column(name = "DT_CONTA")
+    private LocalDate dtConta;
 }
