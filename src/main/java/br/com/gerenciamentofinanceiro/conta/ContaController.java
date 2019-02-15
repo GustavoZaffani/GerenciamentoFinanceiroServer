@@ -1,8 +1,10 @@
 package br.com.gerenciamentofinanceiro.conta;
 
+import br.com.gerenciamentofinanceiro.cartao.Cartao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,6 +32,11 @@ public class ContaController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Integer id) {
         contaService.delete(id);
+    }
+
+    @GetMapping("/extrato")
+    public List<Conta> findContaByCartaoAndVencimentoEquals (@RequestBody Cartao cartao, @PathVariable LocalDate data) {
+        return contaService.findContaByCartaoAndVencimentoEquals(cartao, data);
     }
 
 }

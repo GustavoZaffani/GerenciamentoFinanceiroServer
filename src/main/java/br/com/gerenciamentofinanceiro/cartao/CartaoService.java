@@ -13,4 +13,5 @@ public interface CartaoService {
     void delete(Integer id);
 
     List<Cartao> complete(String query);
+
 }

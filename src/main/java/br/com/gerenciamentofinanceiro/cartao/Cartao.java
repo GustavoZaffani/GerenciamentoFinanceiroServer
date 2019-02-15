@@ -34,11 +34,8 @@ public class Cartao implements Serializable {
     @Column(name = "LIMITE")
     private Long limite;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @NotNull
     @Column(name = "VENCIMENTO")
-    private LocalDate vencimento;
+    private Integer vencimento;
 
     @NotNull
     @Column(name = "TIPO")
@@ -46,4 +43,7 @@ public class Cartao implements Serializable {
 
     @Column(name = "BANDEIRA")
     private String bandeira;
+
+    @Column(name = "MELHOR_DATA")
+    private Integer melhorData;
 }

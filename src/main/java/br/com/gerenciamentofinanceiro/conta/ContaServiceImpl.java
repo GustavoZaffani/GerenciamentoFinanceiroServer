@@ -1,8 +1,10 @@
 package br.com.gerenciamentofinanceiro.conta;
 
+import br.com.gerenciamentofinanceiro.cartao.Cartao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -29,5 +31,10 @@ public class ContaServiceImpl implements ContaService {
     @Override
     public void delete(Integer id) {
         contaData.deleteById(id);
+    }
+
+    @Override
+    public List<Conta> findContaByCartaoAndVencimentoEquals(Cartao cartao, LocalDate data) {
+        return contaData.findContaByCartaoAndVencimentoEquals(cartao, data);
     }
 }
