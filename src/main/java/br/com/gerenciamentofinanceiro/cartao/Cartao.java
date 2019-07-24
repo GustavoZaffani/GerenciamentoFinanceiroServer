@@ -1,15 +1,10 @@
 package br.com.gerenciamentofinanceiro.cartao;
 
-import br.com.gerenciamentofinanceiro.config.LocalDateDeserializer;
-import br.com.gerenciamentofinanceiro.config.LocalDateSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "cartao")
