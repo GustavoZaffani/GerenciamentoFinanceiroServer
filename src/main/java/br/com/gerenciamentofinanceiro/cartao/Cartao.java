@@ -1,5 +1,7 @@
 package br.com.gerenciamentofinanceiro.cartao;
 
+import br.com.gerenciamentofinanceiro.bandeira.Bandeira;
+import br.com.gerenciamentofinanceiro.credenciadora.Credenciadora;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,8 +22,9 @@ public class Cartao implements Serializable {
     @Column(name = "DESCRICAO")
     private String descricao;
 
-    @Column(name = "CREDENCIADORA")
-    private String credenciadora;
+    @ManyToOne
+    @JoinColumn(name = "ID_CREDENCIADORA")
+    private Credenciadora credenciadora;
 
     @Column(name = "CNPJ")
     private Long cnpj;
@@ -36,8 +39,9 @@ public class Cartao implements Serializable {
     @Column(name = "TIPO")
     private String tipo;
 
-    @Column(name = "BANDEIRA")
-    private String bandeira;
+    @ManyToOne
+    @JoinColumn(name = "ID_BANDEIRA")
+    private Bandeira bandeira;
 
     @Column(name = "MELHOR_DATA")
     private Integer melhorData;

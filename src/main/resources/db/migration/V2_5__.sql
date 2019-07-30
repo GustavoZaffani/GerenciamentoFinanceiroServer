@@ -1,9 +1,1 @@
-DROP TABLE USUARIO;
-
-CREATE TABLE IF NOT EXISTS USUARIO(
-  ID                 BIGINT       NOT NULL    AUTO_INCREMENT,
-  NOME               VARCHAR(50)  NOT NULL,
-  USUARIO            VARCHAR(50)  NOT NULL,
-  SENHA              VARCHAR(200)  NOT NULL,
-  PRIMARY KEY PK_USUARIO (ID)
-);
+INSERT INTO USUARIO(nome, usuario, senha) VALUES('Aluno', 'usuario', 'usuario');

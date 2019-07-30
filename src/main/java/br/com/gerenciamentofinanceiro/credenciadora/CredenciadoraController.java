@@ -17,12 +17,12 @@ public class CredenciadoraController {
         return credenciadoraService.findOne(id);
     }
 
-     @GetMapping
+    @GetMapping
     public List<Credenciadora> findAll() {
         return credenciadoraService.findAll();
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public Credenciadora save(@RequestBody Credenciadora credenciadora) {
         return credenciadoraService.save(credenciadora);
     }
@@ -30,5 +30,10 @@ public class CredenciadoraController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Long id) {
         credenciadoraService.delete(id);
+    }
+
+    @GetMapping("/complete")
+    public List<Credenciadora> complete(@RequestParam("query") String query) {
+        return credenciadoraService.complete(query);
     }
 }

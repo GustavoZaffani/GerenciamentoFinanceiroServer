@@ -23,9 +23,32 @@ public class ContaServiceImpl implements ContaService {
         return contaData.findAll();
     }
 
+    // TODO verificar replicacao quando houver parcelas
     @Override
     public Conta save(Conta conta) {
-        return contaData.save(conta);
+        Conta contaAux = null;
+        if (conta.getParcelas() != null) {
+            for (int i = 1; i <= conta.getParcelas(); i++) {
+                contaAux = new Conta();
+                contaAux = conta;
+
+                // se não é a primeira parcela, adiciona mais um mês
+                if (i != 1) {
+                    contaAux.setVencimento(contaAux.getVencimento().plusMonths(1));
+                }
+
+                // se é a última parcela, sai do for e retorna o resultado ao client
+                if (i == conta.getParcelas()) {
+                    contaAux = contaData.save(contaAux);
+                    break;
+                }
+                contaData.save(contaAux);
+                conta.setVencimento(conta.getVencimento().plusMonths(1));
+            }
+        } else {
+            contaAux = contaData.save(conta);
+        }
+        return contaAux;
     }
 
     @Override

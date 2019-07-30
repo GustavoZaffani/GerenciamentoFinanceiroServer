@@ -10,6 +10,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -32,7 +33,7 @@ public class Conta implements Serializable {
     private LocalDate vencimento;
 
     @Column(name = "PARCELAS")
-    private String parcelas;
+    private Integer parcelas;
 
     @ManyToOne
     @JoinColumn(name = "ID_CARTAO")
@@ -42,7 +43,7 @@ public class Conta implements Serializable {
     private String tipoPagamento;
 
     @Column(name = "VALOR")
-    private Long valor;
+    private BigDecimal valor;
 
     @Column(name = "OBSERVACAO")
     private String observacao;

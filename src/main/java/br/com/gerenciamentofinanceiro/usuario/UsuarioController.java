@@ -3,6 +3,7 @@ package br.com.gerenciamentofinanceiro.usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario save(@RequestBody Usuario usuario) {
+    public Usuario save(@RequestBody @Valid Usuario usuario) {
         return usuarioService.save(usuario);
     }
 

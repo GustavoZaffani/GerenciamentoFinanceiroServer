@@ -11,4 +11,6 @@ public interface CredenciadoraService {
     Credenciadora save(Credenciadora credenciadora);
 
     void delete(Long id);
+
+    List<Credenciadora> complete(String credenciadora);
 }

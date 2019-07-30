@@ -30,4 +30,13 @@ public class CredenciadoraServiceImpl implements CredenciadoraService {
     public void delete(Long id) {
         credenciadoraData.deleteById(id);
     }
+
+    @Override
+    public List<Credenciadora> complete(String credenciadora) {
+        if ("".equalsIgnoreCase(credenciadora)) {
+            return credenciadoraData.findAll();
+        } else {
+            return credenciadoraData.findByCredenciadoraLike("%" + credenciadora + "%");
+        }
+    }
 }
