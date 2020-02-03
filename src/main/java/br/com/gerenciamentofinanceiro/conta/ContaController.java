@@ -1,10 +1,8 @@
 package br.com.gerenciamentofinanceiro.conta;
 
-import br.com.gerenciamentofinanceiro.cartao.Cartao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,9 +32,14 @@ public class ContaController {
         contaService.delete(id);
     }
 
-    @GetMapping("/extrato")
-    public List<Conta> findContaByCartaoAndVencimentoEquals (@RequestBody Cartao cartao, @PathVariable LocalDate data) {
-        return contaService.findContaByCartaoAndVencimentoEquals(cartao, data);
+    @PostMapping("/extrato")
+    public List<Conta> findContaByCartaoAndVencimento(@RequestBody Extrato extrato) {
+        return contaService.findContaByCartaoAndVencimento(extrato.getCartao().getId(), converterTeste(extrato.getDtIni()), converterTeste(extrato.getDtFim()));
+    }
+
+    private String converterTeste(String data) {
+        String[] split = data.split("/");
+        return split[2] + "-" + split[1] + "-" + split[0];
     }
 
 }

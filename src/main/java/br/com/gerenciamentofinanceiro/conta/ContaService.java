@@ -16,4 +16,6 @@ public interface ContaService {
     void delete(Integer id);
 
     List<Conta> findContaByCartaoAndVencimentoEquals (Cartao cartao, LocalDate data);
+
+    List<Conta> findContaByCartaoAndVencimento (Integer idCartao, String dtIni, String dtFim);
 }

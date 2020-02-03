@@ -60,4 +60,12 @@ public class ContaServiceImpl implements ContaService {
     public List<Conta> findContaByCartaoAndVencimentoEquals(Cartao cartao, LocalDate data) {
         return contaData.findContaByCartaoAndVencimentoEquals(cartao, data);
     }
+
+    @Override
+    public List<Conta> findContaByCartaoAndVencimento(Integer idCartao, String dtIni, String dtFim) {
+//        return contaData.findContaByCartaoAndVencimento(idCartao, "2019-07-01", "2019-12-31");
+        return contaData.findContaByCartaoAndVencimento(idCartao, dtIni, dtFim);
+    }
+
+
 }
